@@ -2,7 +2,7 @@ image: python:3.10
 
 stages:
   - test
-  - deploy
+  - publish
 
 before_script:
   - python -V

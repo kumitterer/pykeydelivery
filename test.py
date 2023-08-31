@@ -7,12 +7,12 @@ from pykeydelivery import *
 
 class TestHTTPRequest(TestCase):
     def test_http_request(self):
-        http = HTTPRequest("https://httpbin.org/get")
+        http = HTTPRequest("https://httpbin.kumi.systems/get")
         response = http.execute()
         self.assertEqual(response["headers"]["User-Agent"], http.USER_AGENT)
 
     def test_http_request_with_json_payload(self):
-        http = HTTPRequest("https://httpbin.org/post")
+        http = HTTPRequest("https://httpbin.kumi.systems/post")
         http.add_json_payload({"foo": "bar"})
         response = http.execute()
         self.assertEqual(response["headers"]["User-Agent"], http.USER_AGENT)

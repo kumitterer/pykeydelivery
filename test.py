@@ -33,6 +33,10 @@ class TestKeyDelivery(TestCase):
     def test_realtime(self):
         response = self.keydelivery.realtime("gls", "483432314669")
         self.assertEqual(response["code"], 200)
+
+    def test_list_carriers(self):
+        response = self.keydelivery.list_carriers()
+        self.assertTrue(any([carrier["code"] == "gls" for carrier in response["data"]]))
         
 if __name__ == "__main__":
     main()

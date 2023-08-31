@@ -43,7 +43,7 @@ class KeyDelivery:
 
         return request
 
-    def realtime(self, carrier: str, tracking_number: str) -> bytes:
+    def realtime(self, carrier: str, tracking_number: str) -> dict:
         message = {
             "carrier_id": carrier,
             "tracking_number": tracking_number,
@@ -52,10 +52,14 @@ class KeyDelivery:
         request = self.get_request("tracking/realtime", message)
         return request.execute()
 
-    def detect_carrier(self, tracking_number: str) -> bytes:
+    def detect_carrier(self, tracking_number: str) -> dict:
         message = {
             "tracking_number": tracking_number,
         }
 
         request = self.get_request("carriers/detect", message)
+        return request.execute()
+
+    def list_carriers(self) -> dict:
+        request = HTTPRequest("https://app.kd100.com/console/utils/kdbm")
         return request.execute()
